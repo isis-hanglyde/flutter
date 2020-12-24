@@ -1042,13 +1042,14 @@ class Scaffold extends StatefulWidget {
     this.drawerScrimColor,
     this.drawerEdgeDragWidth,
     this.drawerEnableOpenDragGesture = true,
+    this.drawerCallback,
     this.endDrawerEnableOpenDragGesture = true,
   }) : assert(primary != null),
        assert(extendBody != null),
        assert(extendBodyBehindAppBar != null),
        assert(drawerDragStartBehavior != null),
        super(key: key);
-
+final DrawerCallback drawerCallback;
   /// If true, and [bottomNavigationBar] or [persistentFooterButtons]
   /// is specified, then the [body] extends to the bottom of the Scaffold,
   /// instead of only extending to the top of the [bottomNavigationBar]
@@ -2307,7 +2308,8 @@ class ScaffoldState extends State<Scaffold> with TickerProviderStateMixin {
           key: _drawerKey,
           alignment: DrawerAlignment.start,
           child: widget.drawer,
-          drawerCallback: _drawerOpenedCallback,
+          drawerCallback: widget.drawerCallback,
+          //drawerCallback: _drawerOpenedCallback,
           dragStartBehavior: widget.drawerDragStartBehavior,
           scrimColor: widget.drawerScrimColor,
           edgeDragWidth: widget.drawerEdgeDragWidth,
